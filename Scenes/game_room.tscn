@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfxa86eoo53ur"]
+
+[ext_resource type="Theme" uid="uid://b7nst1xim85ss" path="res://Assets/theme.tres" id="1_ftrny"]
+[ext_resource type="Script" path="res://Scripts/game_room.gd" id="2_51vw3"]
+
+[node name="GameRoom" type="PanelContainer"]
+custom_minimum_size = Vector2(250, 200)
+offset_right = 250.0
+offset_bottom = 200.0
+theme = ExtResource("1_ftrny")
+script = ExtResource("2_51vw3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Room Name" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Room Name"
+horizontal_alignment = 1
+
+[node name="Room Description" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "This is the description of the room"
+autowrap_mode = 3

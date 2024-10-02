@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://bnescfkv0qr24"]
+
+[ext_resource type="Script" path="res://Scripts/esc_button.gd" id="1_oyisl"]
+[ext_resource type="Texture2D" uid="uid://daeao46154cw2" path="res://Assets/Tiles/tile_0289.png" id="1_tdxlr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_71r2l"]
+texture = ExtResource("1_tdxlr")
+modulate_color = Color(0.552941, 0.411765, 0.478431, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eex7r"]
+texture = ExtResource("1_tdxlr")
+modulate_color = Color(0.329412, 0.305882, 0.407843, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ikoqh"]
+texture = ExtResource("1_tdxlr")
+modulate_color = Color(0.329412, 0.305882, 0.407843, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sn0x5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ahgnr"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_u347d"]
+pressed = true
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_pl38n"]
+events = [SubResource("InputEventKey_u347d")]
+
+[node name="Esc Button" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_oyisl")
+
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("shortcut_context")]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = -4.0
+offset_top = -3.0
+offset_right = 4.0
+offset_bottom = 5.0
+shortcut_context = NodePath(".")
+theme_override_styles/normal = SubResource("StyleBoxTexture_71r2l")
+theme_override_styles/hover = SubResource("StyleBoxTexture_eex7r")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ikoqh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_sn0x5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ahgnr")
+shortcut = SubResource("Shortcut_pl38n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Button"]
+visible = false
+position = Vector2(4, 4)
+texture = ExtResource("1_tdxlr")

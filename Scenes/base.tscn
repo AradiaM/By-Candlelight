@@ -1,0 +1,124 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbixx4nswalch"]
+
+[ext_resource type="Theme" uid="uid://b7nst1xim85ss" path="res://Assets/theme.tres" id="1_q5oga"]
+[ext_resource type="Texture2D" uid="uid://bc7u3ym8prxoc" path="res://Assets/ColorTheme.png" id="2_5b5d8"]
+[ext_resource type="Script" path="res://Scripts/LEdit.gd" id="2_k1ggd"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="2_tygei"]
+[ext_resource type="Script" path="res://Scripts/CommandProcessor.gd" id="3_sxn1t"]
+[ext_resource type="PackedScene" uid="uid://bfxa86eoo53ur" path="res://Scenes/game_room.tscn" id="4_koom5"]
+[ext_resource type="PackedScene" uid="uid://bnescfkv0qr24" path="res://Scenes/esc_button.tscn" id="6_y7vs7"]
+[ext_resource type="PackedScene" uid="uid://2nbt5nxv57tm" path="res://Scenes/settings_screen.tscn" id="8_wr0nw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_muwld"]
+
+[node name="Base" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q5oga")
+script = ExtResource("2_tygei")
+
+[node name="CommandProcessor" type="Node" parent="."]
+script = ExtResource("3_sxn1t")
+
+[node name="RoomManager" type="Node" parent="."]
+
+[node name="GameRoom" parent="RoomManager" instance=ExtResource("4_koom5")]
+offset_left = -7.0
+offset_top = -270.0
+offset_right = 243.0
+offset_bottom = -70.0
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+color = Color(0.027451, 0.0823529, 0.133333, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MainHbox" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CandleRect" type="ColorRect" parent="MarginContainer/MainHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.0666667, 0.121569, 0.176471, 1)
+
+[node name="TextRect" type="ColorRect" parent="MarginContainer/MainHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+color = Color(0.0666667, 0.121569, 0.176471, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainHbox/TextRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scroll" type="ScrollContainer" parent="MarginContainer/MainHbox/TextRect/VBoxContainer"]
+custom_minimum_size = Vector2(100, 300)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="TextVBox" type="VBoxContainer" parent="MarginContainer/MainHbox/TextRect/VBoxContainer/Scroll"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/MainHbox/TextRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 20.0
+theme = ExtResource("1_q5oga")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_muwld")
+placeholder_text = "Write Text Here"
+caret_blink = true
+script = ExtResource("2_k1ggd")
+
+[node name="ColorTheme" type="Sprite2D" parent="."]
+position = Vector2(309, -25)
+texture = ExtResource("2_5b5d8")
+
+[node name="Esc Button" parent="." instance=ExtResource("6_y7vs7")]
+modulate = Color(0.552941, 0.411765, 0.478431, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.061
+anchor_right = 0.037
+anchor_bottom = 0.061
+offset_left = 0.32
+offset_top = 0.039999
+offset_right = 0.32
+offset_bottom = 0.039999
+
+[node name="Settings Screen" parent="." instance=ExtResource("8_wr0nw")]
+visible = false
+layout_mode = 1
+
+[connection signal="text_submitted" from="MarginContainer/MainHbox/TextRect/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="MarginContainer/MainHbox/TextRect/VBoxContainer/LineEdit" to="MarginContainer/MainHbox/TextRect/VBoxContainer/LineEdit" method="_on_text_submitted"]

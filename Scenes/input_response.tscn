@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://0nwcu1c5acxq"]
+
+[ext_resource type="Script" path="res://Scripts/input_response.gd" id="1_lgfb3"]
+[ext_resource type="PackedScene" uid="uid://dhveu4p818lm" path="res://Scenes/response.tscn" id="2_tc32u"]
+
+[node name="InputResponse" type="VBoxContainer"]
+script = ExtResource("1_lgfb3")
+
+[node name="InputHistory" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.815686, 0.505882, 0.34902, 1)
+theme_override_font_sizes/font_size = 19
+text = "This is what the user typed"
+
+[node name="Response" parent="." instance=ExtResource("2_tc32u")]
+layout_mode = 2
