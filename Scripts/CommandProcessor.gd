@@ -3,7 +3,7 @@ extends Node
 var current_room = null
 
 func init(starting_room):
-	current_room = starting_room
+	return change_room(starting_room)
 
 func process_command(input: String):
 	var words = input.split(" ", false)
@@ -31,7 +31,21 @@ func go(secondWord: String):
 	if secondWord == " ":
 		return "Go where?"
 
-	return "You go %s" %secondWord
+	if current_room.exits.keys().has(secondWord):
+		var change_response = change_room(current_room.exits[secondWord])
+		return "\n".join(PackedStringArray(["You go %s" %secondWord, change_response]))
+	else:
+		return "Nope"
 	
 func help():
 	return "You can use these commands:"
+
+func change_room(new_room):
+	current_room = new_room
+	var exit_string = " ".join(PackedStringArray(new_room.exits.keys( ))) 
+	var strings = "\n".join(PackedStringArray([
+		 new_room.RoomName,
+		 new_room.RoomDesc, 
+		"Exits: " + exit_string
+	]))
+	return strings

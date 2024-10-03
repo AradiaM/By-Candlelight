@@ -22,6 +22,7 @@ text = "Room Name"
 horizontal_alignment = 1
 
 [node name="Room Description" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 text = "This is the description of the room"
 autowrap_mode = 3

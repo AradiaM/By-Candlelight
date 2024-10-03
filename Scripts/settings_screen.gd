@@ -1,8 +1,5 @@
 extends Control
 
-
-
-
 func _on_check_box_toggled(button_pressed):
 	if button_pressed ==true:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
@@ -19,6 +16,9 @@ func _on_resolutions_item_selected(index):
 		2:
 			DisplayServer.window_set_size(Vector2i(1280, 720))
 		
+
+func _on_main_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 #
 #func _on_font_size_item_selected(index):
