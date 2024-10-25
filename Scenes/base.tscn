@@ -33,12 +33,15 @@ offset_left = -7.0
 offset_top = -270.0
 offset_right = 243.0
 offset_bottom = -70.0
+RoomName = "A random house"
+RoomDesc = "This is the description blehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
 
 [node name="House" parent="RoomManager" instance=ExtResource("4_koom5")]
-offset_left = -7.0
-offset_top = -270.0
-offset_right = 243.0
-offset_bottom = -70.0
+offset_left = 290.0
+offset_top = -273.0
+offset_right = 540.0
+offset_bottom = -73.0
+RoomName = "Outside "
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1

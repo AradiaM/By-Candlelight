@@ -7,5 +7,5 @@ void fragment() {
 	uv = uv-1.0;
 	vec4 texture_color = texture(noise, UV);
 	COLOR.rgb = texture_color.rgb;
-	
+
 }
