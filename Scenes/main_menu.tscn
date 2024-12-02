@@ -167,7 +167,7 @@ fit_content = true
 scroll_active = false
 
 [node name="ColorTheme" type="Sprite2D" parent="TextureRect/MarginContainer/VBoxContainer"]
-position = Vector2(663, 137.5)
+position = Vector2(684, 138)
 texture = ExtResource("4_io172")
 
 [connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
